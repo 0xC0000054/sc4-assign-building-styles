@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyTitle>A utility that assigns building styles to DBPF plugins.</AssemblyTitle>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Copyright>Copyright © 2025 Nicholas Hayes</Copyright>
+    <Authors>null45</Authors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Mono.Options" Version="6.12.0.148" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\vendor\DBPFSharp\src\DBPFSharp\DBPFSharp.csproj" />
+  </ItemGroup>
+
+</Project>

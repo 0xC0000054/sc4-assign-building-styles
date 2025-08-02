@@ -1,0 +1,3 @@
+[submodule "vendor/DBPFSharp"]
+	path = vendor/DBPFSharp
+	url = https://github.com/0xC0000054/DBPFSharp.git

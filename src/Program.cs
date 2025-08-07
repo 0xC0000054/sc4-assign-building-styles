@@ -162,6 +162,7 @@ namespace SC4AssignBuildingStyles
         {
             const uint BuildingStylesPropertyID = 0xAA1DD400;
             const uint BuildingIsWallToWallPropertyID = 0xAA1DD401;
+            const uint ExemplarCategoryPropertyID = 0x2C8F8746;
 
             ulong modifiedExemplarCount = 0;
             List<Tuple<string, Exception>> errors = [];
@@ -209,6 +210,11 @@ namespace SC4AssignBuildingStyles
 
                     if (exemplarModified)
                     {
+                        // Remove the ExemplarCategory property that PIMX adds.
+                        // This is done to prevent the Building Style DLL from
+                        // detecting style id 0x2004 as a PIMX placeholder.
+                        exemplar.Properties.Remove(ExemplarCategoryPropertyID);
+
                         byte[] data = exemplar.Encode();
 
                         file.Update(index.Type, index.Group, index.Instance, data, entry.IsCompressed);

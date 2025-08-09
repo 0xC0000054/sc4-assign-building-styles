@@ -1,9 +1,11 @@
 ﻿// Copyright (c) 2025 Nicholas Hayes
 // SPDX-License-Identifier: MIT
 
+using CommandLiners;
 using DBPFSharp;
 using DBPFSharp.FileFormat.Exemplar;
 using DBPFSharp.FileFormat.Exemplar.Properties;
+using Microsoft.Extensions.Configuration;
 using Mono.Options;
 using System.Globalization;
 
@@ -15,61 +17,80 @@ namespace SC4AssignBuildingStyles
         {
             try
             {
-                string buildingStylesOption = string.Empty;
-                string wallToWallOption = string.Empty;
-                bool recurseSubdirectories = false;
-                string installFolderPath = string.Empty;
-                string pluginFolderPath = string.Empty;
+                MapOptions<ProgramOptions> map = new();
 
-                OptionSet options = new()
+                OptionSet optionSet = new()
                 {
                     {
                         "s|building-styles=",
                         "The hexadecimal building style ids. Multiple values must be separated by commas.",
-                        value => buildingStylesOption = value
+                        value => map.Add(value, m => m.BuildingStyles)
                     },
                     {
                         "w|wall-to-wall=",
                         "Indicates if the building are wall to wall (W2W). Must be true or false.",
-                        value => wallToWallOption = value
+                        value => map.Add(value, m => m.IsWallToWall)
                     },
                     {
                         "r|recurse-subdirectories",
                         "Search subdirectories of the input folder for DBPF files.",
-                        value => recurseSubdirectories = value != null
+                        value => map.Add(value != null ? bool.TrueString : bool.FalseString, m => m.RecurseSubdirectories)
                     },
                     {
                         "i|install-folder-path=",
                         "The path of your SimCity 4 installation folder. Used to find parent cohorts.",
-                        value => installFolderPath = value
+                        value => map.Add(value, m => m.InstallFolderPath)
                     },
                     {
                         "p|plugin-folder-path=",
                         "The path of your SimCity 4 plugin folder. Used to find parent cohorts.",
-                        value => pluginFolderPath = value
+                        value => map.Add(value, m => m.PluginFolderPath)
                     },
                 };
 
-                // The arguments must include the file name and at least one command.
-                if (args.Length < 2)
-                {
-                    ShowUsage(options);
-                    return;
-                }
-
-                List<string> remainingArgs = options.Parse(args);
+                List<string> remainingArgs = optionSet.Parse(args);
 
                 if (remainingArgs.Count != 1)
                 {
                     // Unknown or invalid option.
-                    ShowUsage(options);
+                    ShowUsage(optionSet);
                     return;
                 }
 
-                IReadOnlyList<uint>? buildingStyleIds = CommandLineArgs.ParseBuildingStylesOption(buildingStylesOption);
-                bool? isWallToWall = CommandLineArgs.ParseWallToWallOption(wallToWallOption);
+                var builder = new ConfigurationBuilder()
+                    .AddIniFile("SC4AssignBuildingStyles.ini")
+                    .AddCommandLineOptions(map)
+                    .Build();
 
-                ExemplarUtil.InitializeCohortCollection(installFolderPath, pluginFolderPath);
+                ProgramOptions programOptions = new();
+                builder.Bind(programOptions);
+
+                IReadOnlyList<uint>? buildingStyleIds = ProgramOptionsParsing.ParseBuildingStylesOption(programOptions.BuildingStyles);
+                bool? isWallToWall = ProgramOptionsParsing.ParseWallToWallOption(programOptions.IsWallToWall);
+                bool recurseSubdirectories = programOptions.RecurseSubdirectories;
+                ExemplarUtil.InitializeCohortCollection(programOptions.InstallFolderPath, programOptions.PluginFolderPath);
+
+                if (buildingStyleIds != null)
+                {
+                    if (isWallToWall.HasValue)
+                    {
+                        Console.WriteLine("Building Styles: {0}, Is Wall to Wall: {1}", programOptions.BuildingStyles, isWallToWall.Value);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Building Styles: {0}", programOptions.BuildingStyles);
+                    }
+                }
+                else if (isWallToWall.HasValue)
+                {
+                    Console.WriteLine("Is Wall to Wall: {0}", isWallToWall.Value);
+                }
+                else
+                {
+                    Console.WriteLine("The building style and/or wall to wall options must be set.");
+                    Console.WriteLine("Exiting due to the program having nothing to modify.");
+                    return;
+                }
 
                 string input = remainingArgs[0];
 

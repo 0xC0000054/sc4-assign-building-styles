@@ -29,6 +29,11 @@ Example:
 The above command will edit all building exemplars in `file.dat` to have the _Building Styles_ property
 set to 0x2000,0x2001 and the _Building is W2W_ property set to true.
 
+## SC4AssignBuildingStyles.ini
+
+This configuration file provides an alternative to specifying arguments on the command line.
+The command line arguments will override the options set in the INI file if both are configured.
+
 ## License
 
 This project is licensed under the terms of the MIT License.   
@@ -38,6 +43,8 @@ See [License.txt](License.txt) for more information.
 
 [DBPFSharp](https://github.com/0xC0000054/DBPFSharp) - MIT License    
 [Mono.Options](https://github.com/xamarin/XamarinComponents/tree/main/XPlat/Mono.Options) - MIT License    
+[CommandLiners.MonoOptions](https://github.com/riezebosch/CommandLiners) - Unlicense license    
+[Microsoft.Extensions.Configuration](https://github.com/dotnet/dotnet) - MIT License    
 [zlib](https://github.com/madler/zlib) - zlib License   
 
 # Source Code

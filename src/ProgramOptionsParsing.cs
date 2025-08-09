@@ -5,7 +5,7 @@ using System.Globalization;
 
 namespace SC4AssignBuildingStyles
 {
-    internal static class CommandLineArgs
+    internal static class ProgramOptionsParsing
     {
         public static IReadOnlyList<uint>? ParseBuildingStylesOption(ReadOnlySpan<char> data)
         {

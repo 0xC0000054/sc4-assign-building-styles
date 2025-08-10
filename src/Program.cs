@@ -183,6 +183,7 @@ namespace SC4AssignBuildingStyles
         {
             const uint BuildingStylesPropertyID = 0xAA1DD400;
             const uint BuildingIsWallToWallPropertyID = 0xAA1DD401;
+            const uint BuildingStylesPIMXTemplateMarkerPropertyID = 0xAA1DD402;
             const uint ExemplarCategoryPropertyID = 0x2C8F8746;
 
             ulong modifiedExemplarCount = 0;
@@ -231,10 +232,13 @@ namespace SC4AssignBuildingStyles
 
                     if (exemplarModified)
                     {
-                        // Remove the ExemplarCategory property that PIMX adds.
-                        // This is done to prevent the Building Style DLL from
-                        // detecting style id 0x2004 as a PIMX placeholder.
-                        exemplar.Properties.Remove(ExemplarCategoryPropertyID);
+                        // Add the Building Styles PIMX Template Marker when the ExemplarCategory property is present.
+                        // This is done to prevent the Building Style DLL from detecting style id 0x2004 as a PIMX placeholder.
+                        if (exemplar.Properties.ContainsKey(ExemplarCategoryPropertyID))
+                        {
+                            exemplar.Properties[BuildingStylesPIMXTemplateMarkerPropertyID] = new ExemplarPropertyBoolean(BuildingStylesPIMXTemplateMarkerPropertyID,
+                                                                                                                          false);
+                        }
 
                         byte[] data = exemplar.Encode();
 

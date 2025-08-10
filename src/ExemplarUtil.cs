@@ -10,8 +10,8 @@ namespace SC4AssignBuildingStyles
 {
     internal static class ExemplarUtil
     {
-        private const uint CohortTypeID = 0x05342861;
-        private const uint ExemplarTypeID = 0x6534284A;
+        internal const uint CohortTypeID = 0x05342861;
+        internal const uint ExemplarTypeID = 0x6534284A;
 
         private static readonly Dictionary<TGI, Exemplar> cohorts = [];
 

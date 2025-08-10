@@ -10,7 +10,7 @@ It can be downloaded from the Releases tab: https://github.com/0xC0000054/sc4-as
 
 ## Usage
 
-`SC4AssignBuildingStyles OPTIONS <file or directory>`
+`SC4AssignBuildingStyles OPTIONS <file or directory> [exemplar patch output path]`
 
 Options:
 
@@ -31,7 +31,7 @@ set to 0x2000,0x2001 and the _Building is W2W_ property set to true.
 
 ## SC4AssignBuildingStyles.ini
 
-This configuration file provides an alternative to specifying arguments on the command line.
+This configuration file provides an alternative to specifying options on the command line.
 The command line arguments will override the options set in the INI file if both are configured.
 
 ## License

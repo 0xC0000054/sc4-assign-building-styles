@@ -43,13 +43,9 @@ namespace SC4AssignBuildingStyles
                                                        uint propertyId,
                                                        [NotNullWhen(true)] out TProperty? property) where TProperty : ExemplarProperty
         {
-            property = null;
-            bool result = false;
-
-            if (exemplar.Properties.TryGetValue(propertyId, out ExemplarProperty? loadedProperty))
+            if (exemplar.Properties.TryGetValue(propertyId, out property))
             {
-                property = loadedProperty as TProperty;
-                result = property != null;
+                return true;
             }
             else
             {
@@ -59,11 +55,9 @@ namespace SC4AssignBuildingStyles
                 {
                     if (cohorts.TryGetValue(parentCohort, out Exemplar? cohort))
                     {
-                        if (cohort.Properties.TryGetValue(propertyId, out loadedProperty))
+                        if (cohort.Properties.TryGetValue(propertyId, out property))
                         {
-                            property = loadedProperty as TProperty;
-                            result = property != null;
-                            break;
+                            return true;
                         }
 
                         parentCohort = cohort.ParentCohort;
@@ -75,7 +69,8 @@ namespace SC4AssignBuildingStyles
                 }
             }
 
-            return result;
+            property = null;
+            return false;
         }
 
         private static void LoadCohortsFromDirectory(string path, bool recurseSubdirectories = false)

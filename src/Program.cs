@@ -234,7 +234,7 @@ namespace SC4AssignBuildingStyles
                     {
                         // Add the Building Styles PIMX Template Marker when the ExemplarCategory property is present.
                         // This is done to prevent the Building Style DLL from detecting style id 0x2004 as a PIMX placeholder.
-                        if (exemplar.Properties.ContainsKey(ExemplarCategoryPropertyID))
+                        if (exemplar.Properties.Contains(ExemplarCategoryPropertyID))
                         {
                             exemplar.Properties[BuildingStylesPIMXTemplateMarkerPropertyID] = new ExemplarPropertyBoolean(BuildingStylesPIMXTemplateMarkerPropertyID,
                                                                                                                           false);

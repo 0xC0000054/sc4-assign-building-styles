@@ -102,7 +102,7 @@ namespace SC4AssignBuildingStyles
                 }
                 else
                 {
-                    WriteStatus(2,"Processed {0} building exemplar(s).",
+                    WriteStatus(2, "Processed {0} building exemplar(s).",
                                 processExemplarResult.totalPatchedBuildingExemplars);
                 }
             }

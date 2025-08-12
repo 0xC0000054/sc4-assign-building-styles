@@ -45,7 +45,7 @@ namespace SC4AssignBuildingStyles
         protected override void OnProcessingFilesComplete()
         {
             const uint ExemplarPatchGroupID = 0xB03697D1;
-            const uint ExemplarPatchTargetsPropertyID= 0x0062E78A;
+            const uint ExemplarPatchTargetsPropertyID = 0x0062E78A;
 
             if (exemplarsToPatch.Count == 0)
             {

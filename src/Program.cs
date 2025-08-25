@@ -59,11 +59,10 @@ namespace SC4AssignBuildingStyles
                     .AddCommandLineOptions(map)
                     .Build();
 
-                ProgramOptions programOptions = new();
-                builder.Bind(programOptions);
+                ProgramOptions programOptions = new(builder);
 
-                IReadOnlyList<uint>? buildingStyleIds = ProgramOptionsParsing.ParseBuildingStylesOption(programOptions.BuildingStyles);
-                bool? isWallToWall = ProgramOptionsParsing.ParseWallToWallOption(programOptions.IsWallToWall);
+                IReadOnlyList<uint>? buildingStyleIds = programOptions.BuildingStyles;
+                bool? isWallToWall = programOptions.IsWallToWall;
                 bool recurseSubdirectories = programOptions.RecurseSubdirectories;
                 ExemplarUtil.InitializeCohortCollection(programOptions.InstallFolderPath, programOptions.PluginFolderPath);
 

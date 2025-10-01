@@ -91,35 +91,32 @@ namespace SC4AssignBuildingStyles
 
                 string input = remainingArgs[0];
 
-                using (IndentedTextWriter statusWriter = new(Console.Out, " "))
+                BuildingStyleProcessingBase buildingStyleProcessing;
+
+                if (remainingArgs.Count == 2)
                 {
-                    BuildingStyleProcessingBase buildingStyleProcessing;
+                    string exemplarPatchPath = remainingArgs[1];
 
-                    if (remainingArgs.Count == 2)
-                    {
-                        string exemplarPatchPath = remainingArgs[1];
+                    buildingStyleProcessing = new ExemplarPatchBuildingStyleProcessing(exemplarPatchPath,
+                                                                                       buildingStyleIds,
+                                                                                       isWallToWall,
+                                                                                       Console.Out);
+                }
+                else
+                {
+                    buildingStyleProcessing = new InPlaceBuildingStyleProcessing(buildingStyleIds,
+                                                                                 isWallToWall,
+                                                                                 Console.Out);
+                }
 
-                        buildingStyleProcessing = new ExemplarPatchBuildingStyleProcessing(exemplarPatchPath,
-                                                                                           buildingStyleIds,
-                                                                                           isWallToWall,
-                                                                                           statusWriter);
-                    }
-                    else
-                    {
-                        buildingStyleProcessing = new InPlaceBuildingStyleProcessing(buildingStyleIds,
-                                                                                     isWallToWall,
-                                                                                     statusWriter);
-                    }
-
-                    if (Directory.Exists(input))
-                    {
-                        // The path is a directory, update all files in the folder.
-                        buildingStyleProcessing.ProcessDirectory(input, recurseSubdirectories);
-                    }
-                    else
-                    {
-                        buildingStyleProcessing.ProcessFile(input);
-                    }
+                if (Directory.Exists(input))
+                {
+                    // The path is a directory, update all files in the folder.
+                    buildingStyleProcessing.ProcessDirectory(input, recurseSubdirectories);
+                }
+                else
+                {
+                    buildingStyleProcessing.ProcessFile(input);
                 }
             }
             catch (Exception ex)

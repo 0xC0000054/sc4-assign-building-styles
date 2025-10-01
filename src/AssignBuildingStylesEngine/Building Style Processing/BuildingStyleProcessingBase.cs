@@ -18,15 +18,15 @@ namespace AssignBuildingStylesEngine
 
         protected readonly IReadOnlyList<uint>? buildingStyleIds;
         protected readonly bool? isWallToWall;
-        private readonly IndentedTextWriter? statusWriter;
+        private readonly IndentedTextWriter statusWriter;
 
         protected BuildingStyleProcessingBase(IReadOnlyList<uint>? buildingStyleIds,
                                               bool? isWallToWall,
-                                              IndentedTextWriter statusWriter)
+                                              TextWriter statusWriter)
         {
             this.buildingStyleIds = buildingStyleIds;
             this.isWallToWall = isWallToWall;
-            this.statusWriter = statusWriter;
+            this.statusWriter = new IndentedTextWriter(statusWriter, " ");
         }
 
         public void ProcessDirectory(string input, bool recurseSubdirectories)

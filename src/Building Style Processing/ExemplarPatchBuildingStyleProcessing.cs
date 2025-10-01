@@ -56,7 +56,7 @@ namespace SC4AssignBuildingStyles
             {
                 TGI patchTGI = new(ExemplarUtil.CohortTypeID,
                                    ExemplarPatchGroupID,
-                                   GenerateRandomInstanceId());
+                                   TGI.RandomGroupOrInstanceId());
 
                 Exemplar exemplar = new();
 
@@ -104,15 +104,6 @@ namespace SC4AssignBuildingStyles
             }
 
             WriteStatus(0, "Wrote exemplar patch to {0}", exemplarPatchFilePath);
-        }
-
-        private static uint GenerateRandomInstanceId()
-        {
-            Span<byte> buffer = stackalloc byte[sizeof(uint)];
-
-            Random.Shared.NextBytes(buffer);
-
-            return MemoryMarshal.Read<uint>(buffer);
         }
     }
 }

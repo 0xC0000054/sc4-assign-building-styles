@@ -4,7 +4,7 @@
 using Microsoft.Extensions.Configuration;
 using System.Globalization;
 
-namespace SC4AssignBuildingStyles
+namespace AssignBuildingStylesConsole
 {
     internal sealed class ProgramOptions
     {

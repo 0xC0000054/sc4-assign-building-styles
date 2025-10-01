@@ -5,9 +5,8 @@ using AssignBuildingStylesEngine;
 using CommandLiners;
 using Microsoft.Extensions.Configuration;
 using Mono.Options;
-using System.CodeDom.Compiler;
 
-namespace SC4AssignBuildingStyles
+namespace AssignBuildingStylesConsole
 {
     internal class Program
     {

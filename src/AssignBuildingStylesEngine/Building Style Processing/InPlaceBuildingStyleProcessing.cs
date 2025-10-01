@@ -4,6 +4,7 @@
 using DBPFSharp;
 using DBPFSharp.FileFormat.Exemplar;
 using DBPFSharp.FileFormat.Exemplar.Properties;
+using System.CodeDom.Compiler;
 
 namespace AssignBuildingStylesEngine
 {
@@ -11,7 +12,7 @@ namespace AssignBuildingStylesEngine
     {
         public InPlaceBuildingStyleProcessing(IReadOnlyList<uint>? buildingStyleIds,
                                               bool? isWallToWall,
-                                              TextWriter statusWriter)
+                                              IndentedTextWriter statusWriter)
             : base(buildingStyleIds, isWallToWall, statusWriter)
         {
         }

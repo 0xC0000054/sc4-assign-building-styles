@@ -5,11 +5,10 @@ using DBPFSharp;
 using DBPFSharp.FileFormat.Exemplar;
 using DBPFSharp.FileFormat.Exemplar.Properties;
 using System.CodeDom.Compiler;
-using System.Runtime.InteropServices;
 
-namespace SC4AssignBuildingStyles
+namespace AssignBuildingStylesEngine
 {
-    internal sealed class ExemplarPatchBuildingStyleProcessing : BuildingStyleProcessingBase
+    public sealed class ExemplarPatchBuildingStyleProcessing : BuildingStyleProcessingBase
     {
         private readonly string exemplarPatchFilePath;
         private readonly List<TGI> exemplarsToPatch;

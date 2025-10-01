@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\vendor\DBPFSharp\src\DBPFSharp\DBPFSharp.csproj" />
+    <ProjectReference Include="..\AssignBuildingStylesEngine\AssignBuildingStylesEngine.csproj" />
   </ItemGroup>
 
 </Project>

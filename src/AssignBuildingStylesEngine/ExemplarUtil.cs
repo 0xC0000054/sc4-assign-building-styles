@@ -6,9 +6,9 @@ using DBPFSharp.FileFormat.Exemplar;
 using DBPFSharp.FileFormat.Exemplar.Properties;
 using System.Diagnostics.CodeAnalysis;
 
-namespace SC4AssignBuildingStyles
+namespace AssignBuildingStylesEngine
 {
-    internal static class ExemplarUtil
+    public static class ExemplarUtil
     {
         internal const uint CohortTypeID = 0x05342861;
         internal const uint ExemplarTypeID = 0x6534284A;
@@ -19,7 +19,7 @@ namespace SC4AssignBuildingStyles
 
         internal static bool IsExemplar(uint typeId) => typeId == ExemplarTypeID;
 
-        internal static void InitializeCohortCollection(string installFolderPath, string pluginFolderPath)
+        public static void InitializeCohortCollection(string installFolderPath, string pluginFolderPath)
         {
             if (!string.IsNullOrWhiteSpace(installFolderPath))
             {

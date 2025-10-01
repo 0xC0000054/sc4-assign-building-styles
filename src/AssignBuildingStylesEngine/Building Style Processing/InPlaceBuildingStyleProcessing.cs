@@ -6,9 +6,9 @@ using DBPFSharp.FileFormat.Exemplar;
 using DBPFSharp.FileFormat.Exemplar.Properties;
 using System.CodeDom.Compiler;
 
-namespace SC4AssignBuildingStyles
+namespace AssignBuildingStylesEngine
 {
-    internal sealed class InPlaceBuildingStyleProcessing : BuildingStyleProcessingBase
+    public sealed class InPlaceBuildingStyleProcessing : BuildingStyleProcessingBase
     {
         public InPlaceBuildingStyleProcessing(IReadOnlyList<uint>? buildingStyleIds,
                                               bool? isWallToWall,

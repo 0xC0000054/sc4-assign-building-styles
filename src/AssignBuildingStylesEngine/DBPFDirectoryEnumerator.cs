@@ -3,7 +3,7 @@
 
 using System.IO.Enumeration;
 
-namespace SC4AssignBuildingStyles
+namespace AssignBuildingStylesEngine
 {
     internal static class DBPFDirectoryEnumerator
     {

@@ -7,9 +7,9 @@ using DBPFSharp.FileFormat.Exemplar.Properties;
 using System.CodeDom.Compiler;
 using System.Globalization;
 
-namespace SC4AssignBuildingStyles
+namespace AssignBuildingStylesEngine
 {
-    internal abstract class BuildingStyleProcessingBase
+    public abstract class BuildingStyleProcessingBase
     {
         protected const uint BuildingStylesPropertyID = 0xAA1DD400;
         protected const uint BuildingIsWallToWallPropertyID = 0xAA1DD401;

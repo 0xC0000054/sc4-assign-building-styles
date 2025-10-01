@@ -5,7 +5,6 @@ using DBPFSharp;
 using DBPFSharp.FileFormat.Exemplar;
 using DBPFSharp.FileFormat.Exemplar.Properties;
 using System.CodeDom.Compiler;
-using System.Globalization;
 
 namespace AssignBuildingStylesEngine
 {
@@ -81,29 +80,9 @@ namespace AssignBuildingStylesEngine
 
             try
             {
-                ProcessExemplarResult processExemplarResult;
-
                 using (DBPFFile file = new(path))
                 {
-                    processExemplarResult = ProcessBuildingExemplars(file);
-                }
-
-                if (processExemplarResult.errors.Count > 0)
-                {
-                    WriteStatus(2, "Processed {0} building exemplar(s) with {1} error(s).",
-                                processExemplarResult.totalPatchedBuildingExemplars,
-                                processExemplarResult.errors.Count);
-                    WriteStatus(4, "Errors:");
-
-                    foreach (var error in processExemplarResult.errors)
-                    {
-                        WriteStatus(6, "{0}: {1}", error.Item1, error.Item2.Message);
-                    }
-                }
-                else
-                {
-                    WriteStatus(2, "Processed {0} building exemplar(s).",
-                                processExemplarResult.totalPatchedBuildingExemplars);
+                    ProcessBuildingExemplars(file);
                 }
             }
             catch (Exception ex)
@@ -112,10 +91,9 @@ namespace AssignBuildingStylesEngine
             }
         }
 
-        private ProcessExemplarResult ProcessBuildingExemplars(DBPFFile file)
+        private void ProcessBuildingExemplars(DBPFFile file)
         {
-            ulong modifiedExemplarCount = 0;
-            List<Tuple<string, Exception>> errors = [];
+            bool processedBuildingExemplar = false;
 
             var exemplarIndices = file.Index.Where(e => ExemplarUtil.IsExemplar(e.Type));
 
@@ -123,39 +101,43 @@ namespace AssignBuildingStylesEngine
             {
                 DBPFEntry entry = file.GetEntry(index);
 
-                Exemplar? exemplar = null;
-
                 try
                 {
                     byte[] data = entry.GetUncompressedData();
-                    exemplar = new(data);
+                    Exemplar exemplar = new(data);
+
+                    if (IsBuildingExemplar(exemplar))
+                    {
+                        if (ProcessBuildingExemplar(file, index.TGI, exemplar))
+                        {
+                            processedBuildingExemplar = true;
+                            WriteStatus(2,
+                                        "Processed building exemplar 0x{0:X8}, 0x{1:X8}, 0x{2:X8}",
+                                        index.Type,
+                                        index.Group,
+                                        index.Instance);
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
-                    string message = string.Format(CultureInfo.InvariantCulture,
-                                                   "Error when parsing exemplar 0x{0:X8}, 0x{1:X8}, 0x{2:X8}",
-                                                   index.Type,
-                                                   index.Group,
-                                                   index.Instance);
-
-                    errors.Add(new Tuple<string, Exception>(message, ex));
-                }
-
-                if (exemplar != null && IsBuildingExemplar(exemplar))
-                {
-                    if (ProcessBuildingExemplar(file, index.TGI, exemplar))
-                    {
-                        modifiedExemplarCount++;
-                    }
+                    WriteStatus(2,
+                                "Error when processing exemplar 0x{0:X8}, 0x{1:X8}, 0x{2:X8}: {3}",
+                                index.Type,
+                                index.Group,
+                                index.Instance,
+                                ex.Message);
                 }
             }
 
-            if (modifiedExemplarCount > 0)
+            if (processedBuildingExemplar)
             {
                 OnFileModificationsComplete(file);
             }
-
-            return new ProcessExemplarResult(modifiedExemplarCount, errors);
+            else
+            {
+                WriteStatus(2, "The file does not contain any building exemplars.");
+            }
 
             static bool IsBuildingExemplar(Exemplar exemplar)
             {
@@ -190,19 +172,6 @@ namespace AssignBuildingStylesEngine
                 statusWriter.WriteLine(format, args);
 
                 statusWriter.Indent -= indent;
-            }
-        }
-
-        private sealed class ProcessExemplarResult
-        {
-            public readonly ulong totalPatchedBuildingExemplars;
-            public readonly IReadOnlyList<Tuple<string, Exception>> errors;
-
-            public ProcessExemplarResult(ulong totalPatchedBuildingExemplars,
-                                         IReadOnlyList<Tuple<string, Exception>> errors)
-            {
-                this.totalPatchedBuildingExemplars = totalPatchedBuildingExemplars;
-                this.errors = errors ?? throw new ArgumentNullException(nameof(errors));
             }
         }
     }

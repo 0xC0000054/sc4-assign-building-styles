@@ -9,7 +9,7 @@ using System.ComponentModel;
 namespace AssignBuildingStylesWinForms
 {
     internal partial class Form1 : Form
-    {        
+    {
         private readonly List<ListViewItem> inputFileListViewItems;
         private Settings settings;
         private bool cohortColectionInitialized;
@@ -219,11 +219,6 @@ namespace AssignBuildingStylesWinForms
             backgroundWorker.RunWorkerAsync(args);
         }
 
-        private void inputFilesTextBox_TextChanged(object sender, EventArgs e)
-        {
-            UpdateProcessingButtonEnabledState();
-        }
-
         private void AppendToInputFileList(string[] files)
         {
             foreach (var file in files)
@@ -231,6 +226,7 @@ namespace AssignBuildingStylesWinForms
                 inputFileListViewItems.Add(new ListViewItem(file));
             }
             inputFileListView.VirtualListSize = inputFileListViewItems.Count;
+            UpdateProcessingButtonEnabledState();
         }
 
         private void addInputFilesButton_Click(object sender, EventArgs e)

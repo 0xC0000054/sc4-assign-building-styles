@@ -21,6 +21,8 @@ namespace AssignBuildingStylesEngine
 
         public static void InitializeCohortCollection(string installFolderPath, string pluginFolderPath)
         {
+            cohorts.Clear();
+
             if (!string.IsNullOrWhiteSpace(installFolderPath))
             {
                 LoadCohortsFromDirectory(installFolderPath);

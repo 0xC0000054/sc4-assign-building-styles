@@ -35,14 +35,15 @@ namespace AssignBuildingStylesEngine
             {
                 ProcessDBPFFile(path, input);
             }
-
-            OnProcessingFilesComplete();
         }
 
         public void ProcessFile(string path)
         {
             ProcessDBPFFile(path);
+        }
 
+        public void ProcessingFilesComplete()
+        {
             OnProcessingFilesComplete();
         }
 

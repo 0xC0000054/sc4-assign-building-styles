@@ -5,6 +5,7 @@ using AssignBuildingStylesEngine;
 using CommandLiners;
 using Microsoft.Extensions.Configuration;
 using Mono.Options;
+using System.CodeDom.Compiler;
 
 namespace AssignBuildingStylesConsole
 {
@@ -119,6 +120,7 @@ namespace AssignBuildingStylesConsole
                     {
                         buildingStyleProcessing.ProcessFile(input);
                     }
+                    buildingStyleProcessing.ProcessingFilesComplete();
                 }
             }
             catch (Exception ex)

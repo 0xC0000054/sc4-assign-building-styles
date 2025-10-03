@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssignBuildingStylesConsole", "AssignBuildingStylesConsole\AssignBuildingStylesConsole.csproj", "{D6106982-90BC-0564-1B53-1BF79DD72A69}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssignBuildingStylesWinForms", "AssignBuildingStylesWinForms\AssignBuildingStylesWinForms.csproj", "{DE349CCD-3C1A-4E84-B915-26A115E4AD85}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{D6106982-90BC-0564-1B53-1BF79DD72A69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6106982-90BC-0564-1B53-1BF79DD72A69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6106982-90BC-0564-1B53-1BF79DD72A69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE349CCD-3C1A-4E84-B915-26A115E4AD85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE349CCD-3C1A-4E84-B915-26A115E4AD85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE349CCD-3C1A-4E84-B915-26A115E4AD85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE349CCD-3C1A-4E84-B915-26A115E4AD85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

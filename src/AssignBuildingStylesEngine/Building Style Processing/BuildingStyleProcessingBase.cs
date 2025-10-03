@@ -1,6 +1,7 @@
 ﻿// Copyright (c) 2025 Nicholas Hayes
 // SPDX-License-Identifier: MIT
 
+using AssignBuildingStylesEngine.Properties;
 using DBPFSharp;
 using DBPFSharp.FileFormat.Exemplar;
 using DBPFSharp.FileFormat.Exemplar.Properties;
@@ -77,7 +78,7 @@ namespace AssignBuildingStylesEngine
                 fileName = Path.GetFileName(path);
             }
 
-            WriteStatus(0, "Processing {0}:", fileName);
+            WriteStatus(0, Resources.ProcessingFormat, fileName);
 
             try
             {
@@ -113,7 +114,7 @@ namespace AssignBuildingStylesEngine
                         {
                             processedBuildingExemplar = true;
                             WriteStatus(2,
-                                        "Processed building exemplar 0x{0:X8}, 0x{1:X8}, 0x{2:X8}",
+                                        Resources.ProcessedBuildingExemplarFormat,
                                         index.Type,
                                         index.Group,
                                         index.Instance);
@@ -123,7 +124,7 @@ namespace AssignBuildingStylesEngine
                 catch (Exception ex)
                 {
                     WriteStatus(2,
-                                "Error when processing exemplar 0x{0:X8}, 0x{1:X8}, 0x{2:X8}: {3}",
+                                Resources.ExemplarProcessingErrorFormat,
                                 index.Type,
                                 index.Group,
                                 index.Instance,
@@ -137,7 +138,7 @@ namespace AssignBuildingStylesEngine
             }
             else
             {
-                WriteStatus(2, "The file does not contain any building exemplars.");
+                WriteStatus(2, Resources.FileDoesNotContainBuildingExemplars);
             }
 
             static bool IsBuildingExemplar(Exemplar exemplar)

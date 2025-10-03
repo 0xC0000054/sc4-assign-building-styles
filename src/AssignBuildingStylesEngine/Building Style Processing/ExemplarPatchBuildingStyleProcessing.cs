@@ -102,7 +102,7 @@ namespace AssignBuildingStylesEngine
                 file.Save(exemplarPatchFilePath);
             }
 
-            WriteStatus(0, "Wrote exemplar patch to {0}", exemplarPatchFilePath);
+            WriteStatus(0, Properties.Resources.WroteExemplarPatchFormat, exemplarPatchFilePath);
         }
     }
 }

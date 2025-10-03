@@ -41,6 +41,8 @@ namespace AssignBuildingStylesWinForms
                     settings.InstallFolderPath = SC4Directories.GetInstallFolderPathFromRegistry();
                     settings.PluginFolderPath = SC4Directories.GetDefaultUserPluginsPath();
                 }
+
+                ExemplarUtil.InitializeCohortCollection(settings.InstallFolderPath, settings.PluginFolderPath);
             }
             catch (Exception ex)
             {
@@ -260,7 +262,19 @@ namespace AssignBuildingStylesWinForms
             {
                 if (dialog.ShowDialog(this) == DialogResult.OK)
                 {
-                    settings = dialog.Settings;
+                    Settings newSettings = dialog.Settings;
+
+                    if (!string.Equals(settings.InstallFolderPath,
+                                       newSettings.InstallFolderPath,
+                                       StringComparison.OrdinalIgnoreCase)
+                        || !string.Equals(settings.PluginFolderPath,
+                                          newSettings.PluginFolderPath,
+                                          StringComparison.OrdinalIgnoreCase))
+                    {
+                        settings.InstallFolderPath = newSettings.InstallFolderPath;
+                        settings.PluginFolderPath = newSettings.PluginFolderPath;
+                        ExemplarUtil.InitializeCohortCollection(settings.InstallFolderPath, settings.PluginFolderPath);
+                    }
                 }
             }
         }

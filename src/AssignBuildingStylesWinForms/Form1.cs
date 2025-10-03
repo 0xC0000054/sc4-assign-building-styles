@@ -12,6 +12,7 @@ namespace AssignBuildingStylesWinForms
     {        
         private readonly List<ListViewItem> inputFileListViewItems;
         private Settings settings;
+        private bool cohortColectionInitialized;
 
         public Form1()
         {
@@ -19,6 +20,7 @@ namespace AssignBuildingStylesWinForms
 
             inputFileListViewItems = [];
             settings = new Settings();
+            cohortColectionInitialized = false;
             UpdateErrorProviderIcon();
         }
 
@@ -41,8 +43,6 @@ namespace AssignBuildingStylesWinForms
                     settings.InstallFolderPath = SC4Directories.GetInstallFolderPathFromRegistry();
                     settings.PluginFolderPath = SC4Directories.GetDefaultUserPluginsPath();
                 }
-
-                ExemplarUtil.InitializeCohortCollection(settings.InstallFolderPath, settings.PluginFolderPath);
             }
             catch (Exception ex)
             {
@@ -100,6 +100,12 @@ namespace AssignBuildingStylesWinForms
             var worker = (BackgroundWorker)sender;
 
             var args = (BackgroundWorkerArgs)e.Argument!;
+
+            if (!cohortColectionInitialized)
+            {
+                cohortColectionInitialized = true;
+                ExemplarUtil.InitializeCohortCollection(settings.InstallFolderPath, settings.PluginFolderPath);
+            }
 
             var files = args.InputFiles;
             var recurseSubdirectories = args.RecurseSubdirectories;
@@ -273,7 +279,7 @@ namespace AssignBuildingStylesWinForms
                     {
                         settings.InstallFolderPath = newSettings.InstallFolderPath;
                         settings.PluginFolderPath = newSettings.PluginFolderPath;
-                        ExemplarUtil.InitializeCohortCollection(settings.InstallFolderPath, settings.PluginFolderPath);
+                        cohortColectionInitialized = false;
                     }
                 }
             }

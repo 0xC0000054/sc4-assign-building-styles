@@ -25,7 +25,7 @@ This is a cross-platform command line application.
 
 ### Usage
 
-`SC4AssignBuildingStyles OPTIONS <file or directory> [exemplar patch output path]`
+`AssignBuildingStylesConsole OPTIONS <file or directory> [exemplar patch output path]`
 
 Options:
 
@@ -39,7 +39,7 @@ Options:
 
 Example: 
 
-`SC4AssignBuildingStyles --building-styles 0x2000,0x2001 --wall-to-wall true file.dat`
+`AssignBuildingStylesConsole --building-styles 0x2000,0x2001 --wall-to-wall true file.dat`
 
 The above command will edit all building exemplars in `file.dat` to have the _Building Styles_ property
 set to 0x2000,0x2001 and the _Building is W2W_ property set to true.

@@ -185,6 +185,7 @@ namespace AssignBuildingStylesWinForms
             outputTextBox.ReadOnly = true;
             outputTextBox.Size = new Size(892, 295);
             outputTextBox.TabIndex = 1;
+            outputTextBox.TabStop = false;
             outputTextBox.Text = "";
             outputTextBox.WordWrap = false;
             // 
@@ -194,7 +195,7 @@ namespace AssignBuildingStylesWinForms
             buildingStyleIdTextBox.Location = new Point(119, 512);
             buildingStyleIdTextBox.Name = "buildingStyleIdTextBox";
             buildingStyleIdTextBox.Size = new Size(170, 23);
-            buildingStyleIdTextBox.TabIndex = 4;
+            buildingStyleIdTextBox.TabIndex = 5;
             buildingStyleIdTextBox.Validating += buildingStyleIdTextBox_Validating;
             // 
             // buildingStylesTextBoxLabel
@@ -253,7 +254,7 @@ namespace AssignBuildingStylesWinForms
             optionsButton.Location = new Point(538, 513);
             optionsButton.Name = "optionsButton";
             optionsButton.Size = new Size(75, 23);
-            optionsButton.TabIndex = 10;
+            optionsButton.TabIndex = 7;
             optionsButton.Text = "Options...";
             optionsButton.UseVisualStyleBackColor = true;
             optionsButton.Click += optionsButton_Click;

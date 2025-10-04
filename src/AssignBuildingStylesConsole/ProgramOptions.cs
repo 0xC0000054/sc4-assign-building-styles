@@ -11,6 +11,7 @@ namespace AssignBuildingStylesConsole
         public ProgramOptions(IConfiguration configuration)
         {
             BuildingStyles = ParseBuildingStylesOption(configuration[nameof(BuildingStyles)]);
+            BuildingStylesString = configuration[nameof(BuildingStyles)];
             IsWallToWall = ParseWallToWallOption(configuration[nameof(IsWallToWall)]);
             RecurseSubdirectories = ParseBoolean(configuration[nameof(RecurseSubdirectories)]) ?? false;
             InstallFolderPath = configuration[nameof(InstallFolderPath)] ?? string.Empty;
@@ -18,6 +19,8 @@ namespace AssignBuildingStylesConsole
         }
 
         public IReadOnlyList<uint>? BuildingStyles { get; }
+
+        public string? BuildingStylesString { get; }
 
         public bool? IsWallToWall { get; }
 

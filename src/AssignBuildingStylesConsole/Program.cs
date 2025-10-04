@@ -5,7 +5,6 @@ using AssignBuildingStylesEngine;
 using CommandLiners;
 using Microsoft.Extensions.Configuration;
 using Mono.Options;
-using System.CodeDom.Compiler;
 
 namespace AssignBuildingStylesConsole
 {
@@ -71,11 +70,13 @@ namespace AssignBuildingStylesConsole
                 {
                     if (isWallToWall.HasValue)
                     {
-                        Console.WriteLine("Building Styles: {0}, Is Wall to Wall: {1}", programOptions.BuildingStyles, isWallToWall.Value);
+                        Console.WriteLine("Building Styles: {0}, Is Wall to Wall: {1}",
+                                          programOptions.BuildingStylesString,
+                                          isWallToWall.Value);
                     }
                     else
                     {
-                        Console.WriteLine("Building Styles: {0}", programOptions.BuildingStyles);
+                        Console.WriteLine("Building Styles: {0}", programOptions.BuildingStylesString);
                     }
                 }
                 else if (isWallToWall.HasValue)

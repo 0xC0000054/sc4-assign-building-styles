@@ -2,13 +2,28 @@
 
 A utility that assigns building styles to DBPF plugins.
 
+The application is available in two versions, a Windows GUI application and a cross-platform console application. 
+
 It can be downloaded from the Releases tab: https://github.com/0xC0000054/sc4-assign-building-styles/releases
 
-## System Requirements
+## Windows GUI Application
 
-[.NET 9.0](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
+This is a Windows application with a graphical user interface.
 
-## Usage
+### System Requirements
+
+* Windows 10 or later.
+* [.NET 9.0 Desktop Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/9.0/runtime)
+
+## Console Application
+
+This is a cross-platform command line application.
+
+### System Requirements
+
+[.NET 9.0 Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/9.0/runtime) (Windows and Linux)
+
+### Usage
 
 `SC4AssignBuildingStyles OPTIONS <file or directory> [exemplar patch output path]`
 
@@ -29,24 +44,24 @@ Example:
 The above command will edit all building exemplars in `file.dat` to have the _Building Styles_ property
 set to 0x2000,0x2001 and the _Building is W2W_ property set to true.
 
-## SC4AssignBuildingStyles.ini
+### SC4AssignBuildingStyles.ini
 
 This configuration file provides an alternative to specifying options on the command line.
 The command line arguments will override the options set in the INI file if both are configured.
 
-## License
+# License
 
 This project is licensed under the terms of the MIT License.   
 See [License.txt](License.txt) for more information.
 
-### 3rd party code and resources
+## 3rd party code and resources
 
 [DBPFSharp](https://github.com/0xC0000054/DBPFSharp) - MIT License    
 [Mono.Options](https://github.com/xamarin/XamarinComponents/tree/main/XPlat/Mono.Options) - MIT License    
 [CommandLiners.MonoOptions](https://github.com/riezebosch/CommandLiners) - Unlicense license    
 [Microsoft.Extensions.Configuration](https://github.com/dotnet/dotnet) - MIT License    
 [zlib](https://github.com/madler/zlib) - zlib License   
-[T-square SVG](https://freesvg.org/1539966889) - Public Domain
+[T-square SVG](https://freesvg.org/1539966889) - Public Domain   
 [set-square SVG](https://freesvg.org/vector-drawing-of-set-square) - Public Domain
 
 # Source Code

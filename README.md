@@ -39,13 +39,15 @@ The command line arguments will override the options set in the INI file if both
 This project is licensed under the terms of the MIT License.   
 See [License.txt](License.txt) for more information.
 
-### 3rd party code
+### 3rd party code and resources
 
 [DBPFSharp](https://github.com/0xC0000054/DBPFSharp) - MIT License    
 [Mono.Options](https://github.com/xamarin/XamarinComponents/tree/main/XPlat/Mono.Options) - MIT License    
 [CommandLiners.MonoOptions](https://github.com/riezebosch/CommandLiners) - Unlicense license    
 [Microsoft.Extensions.Configuration](https://github.com/dotnet/dotnet) - MIT License    
 [zlib](https://github.com/madler/zlib) - zlib License   
+[T-square SVG](https://freesvg.org/1539966889) - Public Domain
+[set-square SVG](https://freesvg.org/vector-drawing-of-set-square) - Public Domain
 
 # Source Code
 

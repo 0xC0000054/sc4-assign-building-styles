@@ -18,6 +18,7 @@ namespace AssignBuildingStylesWinForms
         {
             InitializeComponent();
 
+            Icon = new Icon(typeof(Form1), "icons.application.ico");
             inputFileListViewItems = [];
             settings = new Settings();
             cohortColectionInitialized = false;
@@ -74,7 +75,6 @@ namespace AssignBuildingStylesWinForms
 
             base.OnClosing(e);
         }
-
 
         private bool ShowErrorMessage(Exception exception)
         {

@@ -13,6 +13,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="icons\application.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="icons\application.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AssignBuildingStylesEngine\AssignBuildingStylesEngine.csproj" />
   </ItemGroup>
 

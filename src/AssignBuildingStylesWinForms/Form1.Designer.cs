@@ -151,10 +151,10 @@ namespace AssignBuildingStylesWinForms
             inputFileListView.Columns.AddRange(new ColumnHeader[] { pathColumnHeader });
             inputFileListView.HeaderStyle = ColumnHeaderStyle.Nonclickable;
             inputFileListView.HideSelection = true;
-            inputFileListView.Location = new Point(13, 47);
+            inputFileListView.Location = new Point(6, 47);
             inputFileListView.MultiSelect = false;
             inputFileListView.Name = "inputFileListView";
-            inputFileListView.Size = new Size(885, 121);
+            inputFileListView.Size = new Size(892, 121);
             inputFileListView.TabIndex = 4;
             inputFileListView.UseCompatibleStateImageBehavior = false;
             inputFileListView.View = View.Details;
@@ -180,12 +180,13 @@ namespace AssignBuildingStylesWinForms
             // outputTextBox
             // 
             outputTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            outputTextBox.Location = new Point(7, 22);
+            outputTextBox.Location = new Point(6, 22);
             outputTextBox.Name = "outputTextBox";
             outputTextBox.ReadOnly = true;
-            outputTextBox.Size = new Size(891, 295);
+            outputTextBox.Size = new Size(892, 295);
             outputTextBox.TabIndex = 1;
             outputTextBox.Text = "";
+            outputTextBox.WordWrap = false;
             // 
             // buildingStyleIdTextBox
             // 

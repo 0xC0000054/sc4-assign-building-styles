@@ -5,7 +5,6 @@ using AssignBuildingStylesEngine.Properties;
 using DBPFSharp;
 using DBPFSharp.FileFormat.Exemplar;
 using DBPFSharp.FileFormat.Exemplar.Properties;
-using System.CodeDom.Compiler;
 
 namespace AssignBuildingStylesEngine
 {
@@ -18,11 +17,11 @@ namespace AssignBuildingStylesEngine
 
         protected readonly IReadOnlyList<uint>? buildingStyleIds;
         protected readonly bool? isWallToWall;
-        private readonly IndentedTextWriter? statusWriter;
+        private readonly IStatusWriter? statusWriter;
 
         protected BuildingStyleProcessingBase(IReadOnlyList<uint>? buildingStyleIds,
                                               bool? isWallToWall,
-                                              IndentedTextWriter statusWriter)
+                                              IStatusWriter? statusWriter)
         {
             this.buildingStyleIds = buildingStyleIds;
             this.isWallToWall = isWallToWall;

@@ -3,7 +3,6 @@
 
 using AssignBuildingStylesEngine;
 using AssignBuildingStylesWinForms.Properties;
-using System.CodeDom.Compiler;
 using System.ComponentModel;
 
 namespace AssignBuildingStylesWinForms
@@ -115,53 +114,51 @@ namespace AssignBuildingStylesWinForms
             double progressDone = 0;
             double progressDelta = (1.0 / files.Count) * 100.0;
 
-            using (IndentedTextWriter statusWriter = new(new TextBoxAppendWriter(outputTextBox), " "))
-            {
-                BuildingStyleProcessingBase buildingStyleProcessing;
+            BuildingStyleProcessingBase buildingStyleProcessing;
+            TextBoxAppendStatusWriter statusWriter = new(outputTextBox);
 
-                if (!string.IsNullOrWhiteSpace(exemplarPatchPath))
+            if (!string.IsNullOrWhiteSpace(exemplarPatchPath))
+            {
+                buildingStyleProcessing = new ExemplarPatchBuildingStyleProcessing(exemplarPatchPath,
+                                                                                   styleIds,
+                                                                                   args.WallToWall,
+                                                                                   statusWriter);
+            }
+            else
+            {
+                buildingStyleProcessing = new InPlaceBuildingStyleProcessing(styleIds,
+                                                                             args.WallToWall,
+                                                                             statusWriter);
+            }
+
+            foreach (var file in files)
+            {
+                if (worker.CancellationPending)
                 {
-                    buildingStyleProcessing = new ExemplarPatchBuildingStyleProcessing(exemplarPatchPath,
-                                                                                       styleIds,
-                                                                                       args.WallToWall,
-                                                                                       statusWriter);
+                    e.Cancel = true;
+                    return;
+                }
+
+                worker.ReportProgress((int)progressDone);
+
+                if (Directory.Exists(file))
+                {
+                    statusWriter.WriteLine(Resources.DirectoryFormat, Path.GetFileName(file));
+                    statusWriter.Indent = 2;
+
+                    buildingStyleProcessing.ProcessDirectory(file, recurseSubdirectories);
+
+                    statusWriter.Indent = 0;
                 }
                 else
                 {
-                    buildingStyleProcessing = new InPlaceBuildingStyleProcessing(styleIds,
-                                                                                 args.WallToWall,
-                                                                                 statusWriter);
+                    buildingStyleProcessing.ProcessFile(file);
                 }
 
-                foreach (var file in files)
-                {
-                    if (worker.CancellationPending)
-                    {
-                        e.Cancel = true;
-                        return;
-                    }
-
-                    worker.ReportProgress((int)progressDone);
-
-                    if (Directory.Exists(file))
-                    {
-                        statusWriter.WriteLine(Resources.DirectoryFormat, Path.GetFileName(file));
-                        statusWriter.Indent = 2;
-
-                        buildingStyleProcessing.ProcessDirectory(file, recurseSubdirectories);
-
-                        statusWriter.Indent = 0;
-                    }
-                    else
-                    {
-                        buildingStyleProcessing.ProcessFile(file);
-                    }
-
-                    progressDone += progressDelta;
-                }
-
-                buildingStyleProcessing.ProcessingFilesComplete();
+                progressDone += progressDelta;
             }
+
+            buildingStyleProcessing.ProcessingFilesComplete();
         }
 
         private void backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)

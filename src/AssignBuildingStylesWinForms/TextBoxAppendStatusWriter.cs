@@ -41,10 +41,11 @@ namespace AssignBuildingStylesWinForms
                     textBox.AppendText(text);
                     textBox.AppendText(Environment.NewLine);
                 }, value);
-            } 
+            }
             else
             {
                 textBox.AppendText(value);
+                textBox.AppendText(Environment.NewLine);
             }
         }
     }

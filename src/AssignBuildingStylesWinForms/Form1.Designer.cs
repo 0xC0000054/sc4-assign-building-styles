@@ -70,7 +70,6 @@ namespace AssignBuildingStylesWinForms
             // includeSubdirectoriesCheckBox
             // 
             includeSubdirectoriesCheckBox.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            includeSubdirectoriesCheckBox.AutoSize = true;
             includeSubdirectoriesCheckBox.Location = new Point(760, 22);
             includeSubdirectoriesCheckBox.Name = "includeSubdirectoriesCheckBox";
             includeSubdirectoriesCheckBox.Size = new Size(143, 19);
@@ -282,7 +281,6 @@ namespace AssignBuildingStylesWinForms
             statusStrip.ResumeLayout(false);
             statusStrip.PerformLayout();
             inputFilesGroupBox.ResumeLayout(false);
-            inputFilesGroupBox.PerformLayout();
             outputGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)errorProvider).EndInit();
             ResumeLayout(false);

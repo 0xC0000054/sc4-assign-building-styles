@@ -281,7 +281,12 @@ namespace AssignBuildingStylesWinForms
 
         private void buildingStyleIdTextBox_Validating(object sender, CancelEventArgs e)
         {
-            if (BuildingStyleIdParsing.IsValidStyleList(buildingStyleIdTextBox.Text))
+            string buildingStyleText = buildingStyleIdTextBox.Text;
+
+            // An empty text box is not treated as a error,
+            // the processing buttons will be disabled in that case.
+            if (string.IsNullOrEmpty(buildingStyleText)
+                || BuildingStyleIdParsing.IsValidStyleList(buildingStyleText))
             {
                 errorProvider.SetError(buildingStyleIdTextBox, null);
                 UpdateProcessingButtonEnabledState();

@@ -6,4 +6,4 @@
 using System.Diagnostics.CodeAnalysis;
 
 [assembly: SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "VS designer uses camel case names", Scope = "type", Target = "~T:AssignBuildingStylesWinForms.Form1")]
-[assembly: SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "VS designer uses camel case names", Scope = "type", Target = "~T:AssignBuildingStylesWinForms.OptionsDialog")]
+[assembly: SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "VS designer uses camel case names", Scope = "type", Target = "~T:AssignBuildingStylesWinForms.SettingsDialog")]

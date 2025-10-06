@@ -3,9 +3,9 @@
 
 namespace AssignBuildingStylesWinForms
 {
-    internal partial class OptionsDialog : Form
+    internal partial class SettingsDialog : Form
     {
-        public OptionsDialog(Settings settings)
+        public SettingsDialog(Settings settings)
         {
             InitializeComponent();
             Settings = settings;

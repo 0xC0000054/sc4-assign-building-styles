@@ -187,7 +187,7 @@ namespace AssignBuildingStylesWinForms
             toolStripProgressBar.Value = 0;
             addInputFilesButton.Enabled = true;
             addInputFoldersButton.Enabled = true;
-            optionsButton.Enabled = true;
+            settingsButton.Enabled = true;
             toolStripProgressBar.Value = 0;
             Cursor = Cursors.Default;
         }
@@ -198,7 +198,7 @@ namespace AssignBuildingStylesWinForms
             addInputFoldersButton.Enabled = false;
             overwriteOriginalFilesButton.Enabled = false;
             saveExemplarPatchButton.Enabled = false;
-            optionsButton.Enabled = false;
+            settingsButton.Enabled = false;
             Cursor = Cursors.WaitCursor;
             outputTextBox.Text = string.Empty;
 
@@ -256,9 +256,9 @@ namespace AssignBuildingStylesWinForms
             }
         }
 
-        private void optionsButton_Click(object sender, EventArgs e)
+        private void settingsButton_Click(object sender, EventArgs e)
         {
-            using (OptionsDialog dialog = new(settings))
+            using (SettingsDialog dialog = new(settings))
             {
                 if (dialog.ShowDialog(this) == DialogResult.OK)
                 {

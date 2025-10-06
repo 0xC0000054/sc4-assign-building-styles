@@ -3,7 +3,7 @@
 
 namespace AssignBuildingStylesWinForms
 {
-    partial class OptionsDialog
+    partial class SettingsDialog
     {
         /// <summary>
         /// Required designer variable.
@@ -166,7 +166,7 @@ namespace AssignBuildingStylesWinForms
             pluginFolderPathDescription1.TabIndex = 0;
             pluginFolderPathDescription1.Text = "The path the your SimCity 4 user plugins folder.";
             // 
-            // OptionsDialog
+            // SettingsDialog
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
@@ -178,9 +178,9 @@ namespace AssignBuildingStylesWinForms
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "OptionsDialog";
+            Name = "SettingsDialog";
             ShowInTaskbar = false;
-            Text = "Options";
+            Text = "Settings";
             intallFolderGroupBox.ResumeLayout(false);
             intallFolderGroupBox.PerformLayout();
             pluginFolderPathGroupBox.ResumeLayout(false);

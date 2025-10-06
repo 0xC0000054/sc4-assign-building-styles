@@ -51,7 +51,7 @@ namespace AssignBuildingStylesWinForms
             overwriteOriginalFilesButton = new Button();
             saveExemplarPatchButton = new Button();
             exemplarPatchSaveDialog = new SaveFileDialog();
-            optionsButton = new Button();
+            settingsButton = new Button();
             errorProvider = new ErrorProvider(components);
             buildingStyleIdDescription = new Label();
             statusStrip.SuspendLayout();
@@ -248,16 +248,16 @@ namespace AssignBuildingStylesWinForms
             exemplarPatchSaveDialog.AddToRecent = false;
             exemplarPatchSaveDialog.Filter = "DAT Files (*.DAT) | *.DAT";
             // 
-            // optionsButton
+            // settingsButton
             // 
-            optionsButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            optionsButton.Location = new Point(563, 521);
-            optionsButton.Name = "optionsButton";
-            optionsButton.Size = new Size(75, 23);
-            optionsButton.TabIndex = 7;
-            optionsButton.Text = "Options...";
-            optionsButton.UseVisualStyleBackColor = true;
-            optionsButton.Click += optionsButton_Click;
+            settingsButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            settingsButton.Location = new Point(563, 521);
+            settingsButton.Name = "settingsButton";
+            settingsButton.Size = new Size(75, 23);
+            settingsButton.TabIndex = 7;
+            settingsButton.Text = "Settings...";
+            settingsButton.UseVisualStyleBackColor = true;
+            settingsButton.Click += settingsButton_Click;
             // 
             // errorProvider
             // 
@@ -278,7 +278,7 @@ namespace AssignBuildingStylesWinForms
             AutoScaleMode = AutoScaleMode.Dpi;
             ClientSize = new Size(953, 577);
             Controls.Add(buildingStyleIdDescription);
-            Controls.Add(optionsButton);
+            Controls.Add(settingsButton);
             Controls.Add(saveExemplarPatchButton);
             Controls.Add(overwriteOriginalFilesButton);
             Controls.Add(wallToWallCheckBox);
@@ -317,7 +317,7 @@ namespace AssignBuildingStylesWinForms
         private Button overwriteOriginalFilesButton;
         private Button saveExemplarPatchButton;
         private SaveFileDialog exemplarPatchSaveDialog;
-        private Button optionsButton;
+        private Button settingsButton;
         private ErrorProvider errorProvider;
         private ListView inputFileListView;
         private ColumnHeader pathColumnHeader;

@@ -127,8 +127,7 @@
     <value>The installation and user plugin paths should be configured in the options dialog.</value>
   </data>
   <data name="StyleTextBoxError" xml:space="preserve">
-    <value>The building style ids must be hexadecimal numbers with commas used as separators when entering multiple styles.
-E.g. 0x2000,0x2001.</value>
+    <value>The building style ids must be hexadecimal numbers with commas used as separators when entering multiple styles. E.g. 0x2000,0x2001.</value>
   </data>
   <data name="DirectoryFormat" xml:space="preserve">
     <value>Directory: {0}</value>

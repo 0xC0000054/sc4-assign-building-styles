@@ -21,6 +21,7 @@ namespace AssignBuildingStylesWinForms
             inputFileListViewItems = [];
             settings = new Settings();
             cohortColectionInitialized = false;
+            buildingStyleIdDescription.Text = Resources.StyleTextBoxError;
             UpdateErrorProviderIcon();
         }
 

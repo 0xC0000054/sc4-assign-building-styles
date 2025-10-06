@@ -97,8 +97,7 @@ namespace AssignBuildingStylesWinForms.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The building style ids must be hexadecimal numbers with commas used as separators when entering multiple styles.
-        ///E.g. 0x2000,0x2001..
+        ///   Looks up a localized string similar to The building style ids must be hexadecimal numbers with commas used as separators when entering multiple styles. E.g. 0x2000,0x2001..
         /// </summary>
         internal static string StyleTextBoxError {
             get {

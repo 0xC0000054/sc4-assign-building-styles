@@ -53,6 +53,7 @@ namespace AssignBuildingStylesWinForms
             exemplarPatchSaveDialog = new SaveFileDialog();
             optionsButton = new Button();
             errorProvider = new ErrorProvider(components);
+            buildingStyleIdDescription = new Label();
             statusStrip.SuspendLayout();
             inputFilesGroupBox.SuspendLayout();
             outputGroupBox.SuspendLayout();
@@ -70,7 +71,7 @@ namespace AssignBuildingStylesWinForms
             // includeSubdirectoriesCheckBox
             // 
             includeSubdirectoriesCheckBox.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            includeSubdirectoriesCheckBox.Location = new Point(760, 22);
+            includeSubdirectoriesCheckBox.Location = new Point(785, 22);
             includeSubdirectoriesCheckBox.Name = "includeSubdirectoriesCheckBox";
             includeSubdirectoriesCheckBox.Size = new Size(143, 19);
             includeSubdirectoriesCheckBox.TabIndex = 3;
@@ -80,7 +81,7 @@ namespace AssignBuildingStylesWinForms
             // addInputFoldersButton
             // 
             addInputFoldersButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            addInputFoldersButton.Location = new Point(658, 19);
+            addInputFoldersButton.Location = new Point(683, 19);
             addInputFoldersButton.Name = "addInputFoldersButton";
             addInputFoldersButton.Size = new Size(96, 23);
             addInputFoldersButton.TabIndex = 2;
@@ -91,7 +92,7 @@ namespace AssignBuildingStylesWinForms
             // addInputFilesButton
             // 
             addInputFilesButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            addInputFilesButton.Location = new Point(577, 19);
+            addInputFilesButton.Location = new Point(602, 19);
             addInputFilesButton.Name = "addInputFilesButton";
             addInputFilesButton.Size = new Size(75, 23);
             addInputFilesButton.TabIndex = 1;
@@ -118,9 +119,9 @@ namespace AssignBuildingStylesWinForms
             // statusStrip
             // 
             statusStrip.Items.AddRange(new ToolStripItem[] { toolStripProgressBar });
-            statusStrip.Location = new Point(0, 547);
+            statusStrip.Location = new Point(0, 555);
             statusStrip.Name = "statusStrip";
-            statusStrip.Size = new Size(928, 22);
+            statusStrip.Size = new Size(953, 22);
             statusStrip.TabIndex = 2;
             statusStrip.Text = "statusStrip";
             // 
@@ -139,7 +140,7 @@ namespace AssignBuildingStylesWinForms
             inputFilesGroupBox.Controls.Add(addInputFilesButton);
             inputFilesGroupBox.Location = new Point(13, 5);
             inputFilesGroupBox.Name = "inputFilesGroupBox";
-            inputFilesGroupBox.Size = new Size(904, 223);
+            inputFilesGroupBox.Size = new Size(929, 231);
             inputFilesGroupBox.TabIndex = 1;
             inputFilesGroupBox.TabStop = false;
             inputFilesGroupBox.Text = "Input Files";
@@ -153,7 +154,7 @@ namespace AssignBuildingStylesWinForms
             inputFileListView.Location = new Point(6, 47);
             inputFileListView.MultiSelect = false;
             inputFileListView.Name = "inputFileListView";
-            inputFileListView.Size = new Size(892, 121);
+            inputFileListView.Size = new Size(917, 121);
             inputFileListView.TabIndex = 4;
             inputFileListView.UseCompatibleStateImageBehavior = false;
             inputFileListView.View = View.Details;
@@ -171,7 +172,7 @@ namespace AssignBuildingStylesWinForms
             outputGroupBox.Controls.Add(outputTextBox);
             outputGroupBox.Location = new Point(13, 179);
             outputGroupBox.Name = "outputGroupBox";
-            outputGroupBox.Size = new Size(903, 323);
+            outputGroupBox.Size = new Size(928, 303);
             outputGroupBox.TabIndex = 3;
             outputGroupBox.TabStop = false;
             outputGroupBox.Text = "Output";
@@ -182,7 +183,7 @@ namespace AssignBuildingStylesWinForms
             outputTextBox.Location = new Point(6, 22);
             outputTextBox.Name = "outputTextBox";
             outputTextBox.ReadOnly = true;
-            outputTextBox.Size = new Size(892, 295);
+            outputTextBox.Size = new Size(917, 275);
             outputTextBox.TabIndex = 1;
             outputTextBox.TabStop = false;
             outputTextBox.Text = "";
@@ -191,7 +192,7 @@ namespace AssignBuildingStylesWinForms
             // buildingStyleIdTextBox
             // 
             buildingStyleIdTextBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            buildingStyleIdTextBox.Location = new Point(119, 512);
+            buildingStyleIdTextBox.Location = new Point(119, 520);
             buildingStyleIdTextBox.Name = "buildingStyleIdTextBox";
             buildingStyleIdTextBox.Size = new Size(170, 23);
             buildingStyleIdTextBox.TabIndex = 5;
@@ -201,7 +202,7 @@ namespace AssignBuildingStylesWinForms
             // 
             buildingStylesTextBoxLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             buildingStylesTextBoxLabel.AutoSize = true;
-            buildingStylesTextBoxLabel.Location = new Point(13, 517);
+            buildingStylesTextBoxLabel.Location = new Point(13, 525);
             buildingStylesTextBoxLabel.Name = "buildingStylesTextBoxLabel";
             buildingStylesTextBoxLabel.Size = new Size(100, 15);
             buildingStylesTextBoxLabel.TabIndex = 5;
@@ -211,7 +212,7 @@ namespace AssignBuildingStylesWinForms
             // 
             wallToWallCheckBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             wallToWallCheckBox.AutoSize = true;
-            wallToWallCheckBox.Location = new Point(295, 516);
+            wallToWallCheckBox.Location = new Point(295, 524);
             wallToWallCheckBox.Name = "wallToWallCheckBox";
             wallToWallCheckBox.Size = new Size(91, 19);
             wallToWallCheckBox.TabIndex = 6;
@@ -222,7 +223,7 @@ namespace AssignBuildingStylesWinForms
             // 
             overwriteOriginalFilesButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             overwriteOriginalFilesButton.Enabled = false;
-            overwriteOriginalFilesButton.Location = new Point(619, 513);
+            overwriteOriginalFilesButton.Location = new Point(644, 521);
             overwriteOriginalFilesButton.Name = "overwriteOriginalFilesButton";
             overwriteOriginalFilesButton.Size = new Size(148, 23);
             overwriteOriginalFilesButton.TabIndex = 8;
@@ -234,7 +235,7 @@ namespace AssignBuildingStylesWinForms
             // 
             saveExemplarPatchButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             saveExemplarPatchButton.Enabled = false;
-            saveExemplarPatchButton.Location = new Point(773, 513);
+            saveExemplarPatchButton.Location = new Point(798, 521);
             saveExemplarPatchButton.Name = "saveExemplarPatchButton";
             saveExemplarPatchButton.Size = new Size(143, 23);
             saveExemplarPatchButton.TabIndex = 9;
@@ -250,7 +251,7 @@ namespace AssignBuildingStylesWinForms
             // optionsButton
             // 
             optionsButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            optionsButton.Location = new Point(538, 513);
+            optionsButton.Location = new Point(563, 521);
             optionsButton.Name = "optionsButton";
             optionsButton.Size = new Size(75, 23);
             optionsButton.TabIndex = 7;
@@ -262,11 +263,21 @@ namespace AssignBuildingStylesWinForms
             // 
             errorProvider.ContainerControl = this;
             // 
+            // buildingStyleIdDescription
+            // 
+            buildingStyleIdDescription.AutoSize = true;
+            buildingStyleIdDescription.Location = new Point(13, 485);
+            buildingStyleIdDescription.Name = "buildingStyleIdDescription";
+            buildingStyleIdDescription.Size = new Size(146, 15);
+            buildingStyleIdDescription.TabIndex = 10;
+            buildingStyleIdDescription.Text = "buildingStyleIdDescription";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
-            ClientSize = new Size(928, 569);
+            ClientSize = new Size(953, 577);
+            Controls.Add(buildingStyleIdDescription);
             Controls.Add(optionsButton);
             Controls.Add(saveExemplarPatchButton);
             Controls.Add(overwriteOriginalFilesButton);
@@ -310,5 +321,6 @@ namespace AssignBuildingStylesWinForms
         private ErrorProvider errorProvider;
         private ListView inputFileListView;
         private ColumnHeader pathColumnHeader;
+        private Label buildingStyleIdDescription;
     }
 }

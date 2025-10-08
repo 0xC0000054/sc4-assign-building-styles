@@ -18,8 +18,7 @@ namespace AssignBuildingStylesConsole
                 Console.Write(' ');
             }
 
-            Console.Write(format, args);
-            Console.WriteLine();
+            Console.WriteLine(format, args);
         }
     }
 }

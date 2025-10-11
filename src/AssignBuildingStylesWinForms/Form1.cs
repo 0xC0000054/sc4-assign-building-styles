@@ -10,6 +10,7 @@ namespace AssignBuildingStylesWinForms
     internal partial class Form1 : Form
     {
         private readonly List<ListViewItem> inputFileListViewItems;
+        private readonly BuildingStyleManager buildingStyleManager;
         private Settings settings;
         private bool cohortColectionInitialized;
 
@@ -20,9 +21,10 @@ namespace AssignBuildingStylesWinForms
             Icon = new Icon(typeof(Form1), "icons.application.ico");
             inputFileListViewItems = [];
             settings = new Settings();
+            buildingStyleManager = new BuildingStyleManager();
             cohortColectionInitialized = false;
             buildingStyleIdDescription.Text = Resources.StyleTextBoxError;
-            UpdateErrorProviderIcon();
+            ErrorProviderHelper.SetIconFromOS(errorProvider);
         }
 
         protected override void OnShown(EventArgs e)
@@ -71,6 +73,18 @@ namespace AssignBuildingStylesWinForms
                         ShowErrorMessage(ex);
                     }
                 }
+
+                if (buildingStyleManager.Dirty)
+                {
+                    try
+                    {
+                        buildingStyleManager.Save();
+                    }
+                    catch (Exception ex)
+                    {
+                        ShowErrorMessage(ex);
+                    }
+                }
             }
 
             base.OnClosing(e);
@@ -79,12 +93,6 @@ namespace AssignBuildingStylesWinForms
         private bool ShowErrorMessage(Exception exception)
         {
             return TaskDialogUtil.ShowErrorMessageBox(this, Text, exception);
-        }
-
-        private void UpdateErrorProviderIcon()
-        {
-            int width = errorProvider.Icon.Width;
-            errorProvider.Icon = SystemIcons.GetStockIcon(StockIconId.Error, width);
         }
 
         private void UpdateProcessingButtonEnabledState()
@@ -301,6 +309,17 @@ namespace AssignBuildingStylesWinForms
         private void inputFileListView_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e)
         {
             e.Item = inputFileListViewItems[e.ItemIndex];
+        }
+
+        private void chooseStylesButton_Click(object sender, EventArgs e)
+        {
+            using (ChooseStyleDialog dialog = new(buildingStyleManager))
+            {
+                if (dialog.ShowDialog(this) == DialogResult.OK)
+                {
+                    buildingStyleIdTextBox.Text = dialog.CheckedStyleIds;
+                }
+            }
         }
     }
 }

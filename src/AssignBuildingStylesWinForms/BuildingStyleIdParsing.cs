@@ -8,6 +8,12 @@ namespace AssignBuildingStylesWinForms
 {
     internal static partial class BuildingStyleIdParsing
     {
+        internal static bool IsValidSingleStyle(ReadOnlySpan<char> text)
+        {
+            return !text.IsEmpty
+                && HexNumberRegex().IsMatch(text);
+        }
+
         /// <summary>
         /// Determines whether the specified text is a is valid style list.
         /// </summary>
@@ -35,16 +41,37 @@ namespace AssignBuildingStylesWinForms
 
             foreach (var range in text.Split(','))
             {
-                var segment = text[range];
-
-                // Remove the 0x prefix as uint.Parse thrown an exception if it is present.
-                result.Add(uint.Parse(segment[2..], NumberStyles.HexNumber, CultureInfo.InvariantCulture));
+                result.Add(ParseStyleNumberInternal(text[range]));
             }
 
             return result;
         }
 
+        internal static uint ParseStyleNumber(ReadOnlySpan<char> text)
+        {
+            if (!IsValidSingleStyle(text))
+            {
+                throw new InvalidOperationException("The style id text must be a hexadecimal number with the 0x prefix.");
+            }
+
+            return ParseStyleNumberInternal(text);
+        }
+
+        internal static string StyleNumberToString(uint style)
+        {
+            return string.Format(CultureInfo.InvariantCulture, "0x{0:X}", style);
+        }
+
+        private static uint ParseStyleNumberInternal(ReadOnlySpan<char> text)
+        {
+            // Remove the 0x prefix as uint.Parse thrown an exception if it is present.
+            return uint.Parse(text[2..], NumberStyles.HexNumber, CultureInfo.InvariantCulture);
+        }
+
         [GeneratedRegex("^0x[0-9a-f]+(?:,0x[0-9a-f]+)*$", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase)]
         private static partial Regex CommaSeparatedHexRegex();
+
+        [GeneratedRegex("^0x[0-9a-f]+$", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase)]
+        private static partial Regex HexNumberRegex();
     }
 }

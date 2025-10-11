@@ -54,6 +54,7 @@ namespace AssignBuildingStylesWinForms
             settingsButton = new Button();
             errorProvider = new ErrorProvider(components);
             buildingStyleIdDescription = new Label();
+            chooseStylesButton = new Button();
             statusStrip.SuspendLayout();
             inputFilesGroupBox.SuspendLayout();
             outputGroupBox.SuspendLayout();
@@ -212,7 +213,7 @@ namespace AssignBuildingStylesWinForms
             // 
             wallToWallCheckBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             wallToWallCheckBox.AutoSize = true;
-            wallToWallCheckBox.Location = new Point(295, 524);
+            wallToWallCheckBox.Location = new Point(406, 525);
             wallToWallCheckBox.Name = "wallToWallCheckBox";
             wallToWallCheckBox.Size = new Size(91, 19);
             wallToWallCheckBox.TabIndex = 6;
@@ -272,11 +273,22 @@ namespace AssignBuildingStylesWinForms
             buildingStyleIdDescription.TabIndex = 10;
             buildingStyleIdDescription.Text = "buildingStyleIdDescription";
             // 
+            // chooseStylesButton
+            // 
+            chooseStylesButton.Location = new Point(295, 521);
+            chooseStylesButton.Name = "chooseStylesButton";
+            chooseStylesButton.Size = new Size(105, 23);
+            chooseStylesButton.TabIndex = 11;
+            chooseStylesButton.Text = "Choose Styles...";
+            chooseStylesButton.UseVisualStyleBackColor = true;
+            chooseStylesButton.Click += chooseStylesButton_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
             ClientSize = new Size(953, 577);
+            Controls.Add(chooseStylesButton);
             Controls.Add(buildingStyleIdDescription);
             Controls.Add(settingsButton);
             Controls.Add(saveExemplarPatchButton);
@@ -322,5 +334,6 @@ namespace AssignBuildingStylesWinForms
         private ListView inputFileListView;
         private ColumnHeader pathColumnHeader;
         private Label buildingStyleIdDescription;
+        private Button chooseStylesButton;
     }
 }

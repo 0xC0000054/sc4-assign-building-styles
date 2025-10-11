@@ -61,6 +61,42 @@ namespace AssignBuildingStylesWinForms.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The value cannot be empty..
+        /// </summary>
+        internal static string ChooseStyleAddEmptyTextBox {
+            get {
+                return ResourceManager.GetString("ChooseStyleAddEmptyTextBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hide Add Style Controls.
+        /// </summary>
+        internal static string ChooseStyleHideAddStyleText {
+            get {
+                return ResourceManager.GetString("ChooseStyleHideAddStyleText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The building style id must be a hexadecimal number. E.g. 0x2000..
+        /// </summary>
+        internal static string ChooseStyleInvalidStyleId {
+            get {
+                return ResourceManager.GetString("ChooseStyleInvalidStyleId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show Add Style Controls.
+        /// </summary>
+        internal static string ChooseStyleShowAddStyleText {
+            get {
+                return ResourceManager.GetString("ChooseStyleShowAddStyleText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The installation and user plugin paths should be configured in the options dialog..
         /// </summary>
         internal static string ConfigureOptionsText {

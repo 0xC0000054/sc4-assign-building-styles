@@ -22,6 +22,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="LinkDotNet.StringBuilder" Version="2.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AssignBuildingStylesEngine\AssignBuildingStylesEngine.csproj" />
   </ItemGroup>
 

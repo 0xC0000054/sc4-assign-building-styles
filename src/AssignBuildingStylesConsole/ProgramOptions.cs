@@ -16,6 +16,7 @@ namespace AssignBuildingStylesConsole
             RecurseSubdirectories = ParseBoolean(configuration[nameof(RecurseSubdirectories)]) ?? false;
             InstallFolderPath = configuration[nameof(InstallFolderPath)] ?? string.Empty;
             PluginFolderPath = configuration[nameof(PluginFolderPath)] ?? string.Empty;
+            ExemplarPatchPath = configuration[nameof(ExemplarPatchPath)] ?? string.Empty;
         }
 
         public IReadOnlyList<uint>? BuildingStyles { get; }
@@ -29,6 +30,8 @@ namespace AssignBuildingStylesConsole
         public string InstallFolderPath { get; }
 
         public string PluginFolderPath { get; }
+
+        public string ExemplarPatchPath { get; }
 
         private static List<uint>? ParseBuildingStylesOption(ReadOnlySpan<char> data)
         {

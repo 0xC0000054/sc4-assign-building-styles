@@ -43,11 +43,16 @@ namespace AssignBuildingStylesConsole
                         "The path of your SimCity 4 plugin folder. Used to find parent cohorts.",
                         value => map.Add(value, m => m.PluginFolderPath)
                     },
+                    {
+                        "e|exemplar-patch=",
+                        "The output path to use when writing an exemplar patch.",
+                        value => map.Add(value, m => m.ExemplarPatchPath)
+                    },
                 };
 
                 List<string> remainingArgs = optionSet.Parse(args);
 
-                if (remainingArgs.Count != 1 && remainingArgs.Count != 2)
+                if (remainingArgs.Count == 0)
                 {
                     // Unknown or invalid option.
                     ShowUsage(optionSet);
@@ -64,6 +69,7 @@ namespace AssignBuildingStylesConsole
                 IReadOnlyList<uint>? buildingStyleIds = programOptions.BuildingStyles;
                 bool? isWallToWall = programOptions.IsWallToWall;
                 bool recurseSubdirectories = programOptions.RecurseSubdirectories;
+                string exemplarPatchPath = programOptions.ExemplarPatchPath;
                 ExemplarUtil.InitializeCohortCollection(programOptions.InstallFolderPath, programOptions.PluginFolderPath);
 
                 if (buildingStyleIds != null)
@@ -90,16 +96,11 @@ namespace AssignBuildingStylesConsole
                     return;
                 }
 
-                string input = remainingArgs[0];
-
-
                 BuildingStyleProcessingBase buildingStyleProcessing;
                 ConsoleStatusWriter statusWriter = new();
 
-                if (remainingArgs.Count == 2)
+                if (!string.IsNullOrWhiteSpace(exemplarPatchPath))
                 {
-                    string exemplarPatchPath = remainingArgs[1];
-
                     buildingStyleProcessing = new ExemplarPatchBuildingStyleProcessing(exemplarPatchPath,
                                                                                        buildingStyleIds,
                                                                                        isWallToWall,
@@ -112,14 +113,17 @@ namespace AssignBuildingStylesConsole
                                                                                  statusWriter);
                 }
 
-                if (Directory.Exists(input))
+                foreach (string input in remainingArgs)
                 {
-                    // The path is a directory, update all files in the folder.
-                    buildingStyleProcessing.ProcessDirectory(input, recurseSubdirectories);
-                }
-                else
-                {
-                    buildingStyleProcessing.ProcessFile(input);
+                    if (Directory.Exists(input))
+                    {
+                        // The path is a directory, update all files in the folder.
+                        buildingStyleProcessing.ProcessDirectory(input, recurseSubdirectories);
+                    }
+                    else
+                    {
+                        buildingStyleProcessing.ProcessFile(input);
+                    }
                 }
                 buildingStyleProcessing.ProcessingFilesComplete();
             }
@@ -131,7 +135,7 @@ namespace AssignBuildingStylesConsole
 
         private static void ShowUsage(OptionSet options)
         {
-            Console.WriteLine("SC4AssignBuildingStyles OPTIONS <file or directory> [exemplar patch output path]");
+            Console.WriteLine("SC4AssignBuildingStyles OPTIONS <files or directories>");
             Console.WriteLine("If the input path is a directory, the options will be applied to all files within it.");
             Console.WriteLine("");
             Console.WriteLine("Options:");

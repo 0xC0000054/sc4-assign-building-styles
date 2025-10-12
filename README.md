@@ -25,7 +25,7 @@ This is a cross-platform command line application.
 
 ### Usage
 
-`AssignBuildingStylesConsole OPTIONS <file or directory> [exemplar patch output path]`
+`AssignBuildingStylesConsole OPTIONS <files or directories>`
 
 Options:
 
@@ -36,6 +36,7 @@ Options:
 | --recurse-subdirectories | -r | Search subdirectories of the input folder for DBPF files. |
 | --install-folder-path | -i | The path of your SimCity 4 installation folder. Used to find parent cohorts. |
 | --plugin-folder-path | -p | The path of your SimCity 4 plugin folder. Used to find parent cohorts. |
+| --exemplar-patch | -e | The output path to use when writing an exemplar patch. |
 
 Example: 
 

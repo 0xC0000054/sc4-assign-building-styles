@@ -2,12 +2,14 @@
 // SPDX-License-Identifier: MIT
 
 using Microsoft.Win32;
+using System.Runtime.Versioning;
 
-namespace AssignBuildingStylesWinForms
+namespace AssignBuildingStylesEngine
 {
-    internal static class SC4Directories
+    [SupportedOSPlatform("windows")]
+    public static class SC4Directories
     {
-        internal static string GetInstallFolderPathFromRegistry()
+        public static string GetInstallFolderPathFromRegistry()
         {
             string path = string.Empty;
 
@@ -27,7 +29,7 @@ namespace AssignBuildingStylesWinForms
             return path;
         }
 
-        internal static string GetDefaultUserPluginsPath()
+        public static string GetDefaultUserPluginsPath()
         {
             string path = string.Empty;
 

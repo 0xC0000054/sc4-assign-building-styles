@@ -1,4 +1,6 @@
-﻿
+﻿// Copyright (c) 2025 Nicholas Hayes
+// SPDX-License-Identifier: MIT
+
 using AssignBuildingStylesWinForms.Properties;
 using LinkDotNet.StringBuilder;
 
@@ -44,7 +46,7 @@ namespace AssignBuildingStylesWinForms
                 author,
                 description
             ])
-            { 
+            {
                 Tag = new Box<uint>(styleID)
             };
         }

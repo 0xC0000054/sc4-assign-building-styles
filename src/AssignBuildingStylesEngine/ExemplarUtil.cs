@@ -4,6 +4,7 @@
 using DBPFSharp;
 using DBPFSharp.FileFormat.Exemplar;
 using DBPFSharp.FileFormat.Exemplar.Properties;
+using System.Collections.Concurrent;
 using System.Diagnostics.CodeAnalysis;
 
 namespace AssignBuildingStylesEngine
@@ -13,7 +14,7 @@ namespace AssignBuildingStylesEngine
         internal const uint CohortTypeID = 0x05342861;
         internal const uint ExemplarTypeID = 0x6534284A;
 
-        private static readonly Dictionary<TGI, Exemplar> cohorts = [];
+        private static readonly ConcurrentDictionary<TGI, Exemplar> cohorts = [];
 
         internal static bool IsCohort(uint typeId) => typeId == CohortTypeID;
 

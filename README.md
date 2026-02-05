@@ -57,6 +57,7 @@ See [License.txt](License.txt) for more information.
 
 ## 3rd party code and resources
 
+[BuildingStyleToolsCommon](https://github.com/0xC0000054/BuildingStyleToolsCommon) - MIT License    
 [DBPFSharp](https://github.com/0xC0000054/DBPFSharp) - MIT License    
 [Mono.Options](https://github.com/xamarin/XamarinComponents/tree/main/XPlat/Mono.Options) - MIT License    
 [CommandLiners.MonoOptions](https://github.com/riezebosch/CommandLiners) - Unlicense license    
@@ -70,7 +71,7 @@ See [License.txt](License.txt) for more information.
 
 ## Prerequisites
 
-* Visual Studio 2022
+* Visual Studio 2026
 * git submodule update --init
 
 ## Building the plugin

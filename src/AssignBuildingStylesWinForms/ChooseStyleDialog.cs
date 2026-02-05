@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: MIT
 
 using AssignBuildingStylesWinForms.Properties;
+using BuildingStyleToolsCommon;
 using LinkDotNet.StringBuilder;
 
 namespace AssignBuildingStylesWinForms

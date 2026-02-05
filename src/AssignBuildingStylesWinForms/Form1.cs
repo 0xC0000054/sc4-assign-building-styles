@@ -3,6 +3,7 @@
 
 using AssignBuildingStylesEngine;
 using AssignBuildingStylesWinForms.Properties;
+using BuildingStyleToolsCommon;
 using System.ComponentModel;
 
 namespace AssignBuildingStylesWinForms
@@ -21,7 +22,10 @@ namespace AssignBuildingStylesWinForms
             Icon = new Icon(typeof(Form1), "icons.application.ico");
             inputFileListViewItems = [];
             settings = new Settings();
-            buildingStyleManager = new BuildingStyleManager();
+
+            string cacheFilePath = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)!, "BuildingStyleCache.json");
+
+            buildingStyleManager = new BuildingStyleManager(new BuildingStyleManagerJsonSerializer(cacheFilePath));
             cohortColectionInitialized = false;
             buildingStyleIdDescription.Text = Resources.StyleTextBoxError;
             ErrorProviderHelper.SetIconFromOS(errorProvider);

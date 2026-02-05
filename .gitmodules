@@ -1,3 +1,6 @@
 [submodule "vendor/DBPFSharp"]
 	path = vendor/DBPFSharp
 	url = https://github.com/0xC0000054/DBPFSharp.git
+[submodule "vendor/BuildingStyleToolsCommon"]
+	path = vendor/BuildingStyleToolsCommon
+	url = https://github.com/0xC0000054/BuildingStyleToolsCommon.git

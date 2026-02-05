@@ -26,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\vendor\BuildingStyleToolsCommon\src\BuildingStyleToolsCommon.csproj" />
     <ProjectReference Include="..\AssignBuildingStylesEngine\AssignBuildingStylesEngine.csproj" />
   </ItemGroup>
 

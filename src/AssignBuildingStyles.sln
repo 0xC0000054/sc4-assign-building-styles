@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36310.24
+# Visual Studio Version 18
+VisualStudioVersion = 18.2.11415.280
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBPFSharp", "..\vendor\DBPFSharp\src\DBPFSharp\DBPFSharp.csproj", "{2340077E-722E-7E4D-6617-3A3494E8160A}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssignBuildingStylesConsole", "AssignBuildingStylesConsole\AssignBuildingStylesConsole.csproj", "{D6106982-90BC-0564-1B53-1BF79DD72A69}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssignBuildingStylesWinForms", "AssignBuildingStylesWinForms\AssignBuildingStylesWinForms.csproj", "{DE349CCD-3C1A-4E84-B915-26A115E4AD85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingStyleToolsCommon", "..\vendor\BuildingStyleToolsCommon\src\BuildingStyleToolsCommon.csproj", "{B53F0233-F7E5-9E9F-8C2C-AD42E61AAAAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{DE349CCD-3C1A-4E84-B915-26A115E4AD85}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE349CCD-3C1A-4E84-B915-26A115E4AD85}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE349CCD-3C1A-4E84-B915-26A115E4AD85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B53F0233-F7E5-9E9F-8C2C-AD42E61AAAAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B53F0233-F7E5-9E9F-8C2C-AD42E61AAAAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B53F0233-F7E5-9E9F-8C2C-AD42E61AAAAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B53F0233-F7E5-9E9F-8C2C-AD42E61AAAAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

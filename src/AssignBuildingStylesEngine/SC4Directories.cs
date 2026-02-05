@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2025 Nicholas Hayes
+﻿// Copyright (c) 2025, 2026 Nicholas Hayes
 // SPDX-License-Identifier: MIT
 
 using Microsoft.Win32;

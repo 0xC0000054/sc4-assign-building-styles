@@ -53,7 +53,7 @@ namespace AssignBuildingStylesWinForms
             }
         }
 
-        protected override void OnClosing(CancelEventArgs e)
+        protected override void OnFormClosing(FormClosingEventArgs e)
         {
             if (backgroundWorker.IsBusy)
             {
@@ -87,7 +87,7 @@ namespace AssignBuildingStylesWinForms
                 }
             }
 
-            base.OnClosing(e);
+            base.OnFormClosing(e);
         }
 
         private bool ShowErrorMessage(Exception exception)

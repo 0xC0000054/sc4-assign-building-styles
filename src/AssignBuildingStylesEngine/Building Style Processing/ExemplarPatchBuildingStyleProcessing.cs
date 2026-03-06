@@ -56,7 +56,7 @@ namespace AssignBuildingStylesEngine
                                    ExemplarPatchGroupID,
                                    TGI.RandomGroupOrInstanceId());
 
-                Exemplar exemplar = new();
+                Exemplar exemplar = new() { IsCohort = true };
 
                 // The exemplar patch property data is an array containing group/instance id pairs.
                 // One pair for each exemplar to be patched.
